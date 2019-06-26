@@ -1,0 +1,27 @@
+<% include ./header %>
+<div class="ui secondary fixed menu" style="background-color: rgb(196, 255, 118)">
+    <div class="item"><i class="pencil alternate icon" style="font-size: 2em;"></i>Blog Site</div>
+    <a class="active item" href="/blogs">Home</a>
+    <a class="item" href="/blogs/new">New Post</a>
+</div>
+
+<% blogs.forEach(function(blog){ %>
+   <div class="ui main text container segment">
+        <div class="ui huge header"><%= blog.title%></div>
+        <div class="item">
+                <img class="ui centered rounded image" src="<%= blog.image %>" >
+                <div class="content">
+                    <span><%= blog.created.toDateString() %></span>
+                </div>
+                <div class="description">
+                    <p><%- blog.body.substring(0, 100)%></p>
+                </div>
+                <a class="ui orange inverted button" href="/blogs/<%= blog._id %>">Read More</a>
+       </div>
+   </div>
+<% }); %>
+
+<% include ./footer %>
+
+
+

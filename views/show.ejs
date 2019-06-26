@@ -1,0 +1,29 @@
+<% include ./header %>
+
+<div class="ui secondary top fixed menu" style="background-color: rgb(196, 255, 118)">
+    <div class="item"><i class="pencil alternate icon" style="font-size: 2em;"></i>Blog Site</div>
+    <a class="item" href="/blogs">Home</a>
+    <a class="item" href="/blogs/new">New Post</a>
+</div>
+
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= blog.title%></div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui centered rounded image" src="<%= blog.image %>" >
+            <div class="content">
+                <span><%= blog.created.toDateString() %></span>
+            </div>
+            <div class="description">
+                <p><%- blog.body%></p>
+            </div>
+            <a class="ui orange inverted button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+            <form style="display: inline;" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                <button class="ui red inverted button">Delete</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<% include ./footer %>
